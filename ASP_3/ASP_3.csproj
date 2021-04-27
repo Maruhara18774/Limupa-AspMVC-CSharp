@@ -138,10 +138,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database\LimupaStore.mdf" />
-    <Content Include="App_Data\Database\LimupaStore_log.ldf">
-      <DependentUpon>LimupaStore.mdf</DependentUpon>
-    </Content>
     <Content Include="Assets\Client\css\animate.css" />
     <Content Include="Assets\Client\css\bootstrap.min.css" />
     <Content Include="Assets\Client\css\font-awesome.min.css" />
@@ -338,6 +334,7 @@
     <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Assets\Admin\" />
     <Folder Include="Models\" />
   </ItemGroup>
