@@ -32,6 +32,7 @@ namespace ASP_3.Models
         public Nullable<int> PRODUCT_COUNT { get; set; }
         public string CREATE_DATE { get; set; }
         public string PRODUCER_ID { get; set; }
+        public string PRODUCTTYPE_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CARTDETAIL> CARTDETAILs { get; set; }
@@ -40,6 +41,7 @@ namespace ASP_3.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FAVORITE> FAVORITEs { get; set; }
         public virtual PRODUCER PRODUCER { get; set; }
+        public virtual PRODUCTTYPE PRODUCTTYPE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RATING> RATINGs { get; set; }
     }

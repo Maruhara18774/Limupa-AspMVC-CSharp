@@ -36,6 +36,7 @@ namespace ASP_3.Models
         public virtual DbSet<PAYMENT> PAYMENTs { get; set; }
         public virtual DbSet<PRODUCER> PRODUCERs { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
+        public virtual DbSet<PRODUCTTYPE> PRODUCTTYPEs { get; set; }
         public virtual DbSet<RATING> RATINGs { get; set; }
         public virtual DbSet<ROLE> ROLES { get; set; }
     }
