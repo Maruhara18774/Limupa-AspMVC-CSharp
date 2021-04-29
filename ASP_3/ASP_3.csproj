@@ -145,61 +145,64 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ACCOUNT.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CART.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CARTDETAIL.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\COMMENT.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FAVORITE.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LIMUPAModel.Context.cs">
+    <Compile Include="Models\FEATURE.cs">
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LIPUMAModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LIMUPAModel.Context.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LIMUPAModel.cs">
+    <Compile Include="Models\LIPUMAModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LIMUPAModel.Designer.cs">
+    <Compile Include="Models\LIPUMAModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LIMUPAModel.edmx</DependentUpon>
+      <DependentUpon>LIPUMAModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\MEMBER.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ORDER.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ORDERSTATU.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PAYMENT.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PRODUCER.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PRODUCT.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PRODUCTTYPE.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RATING.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ROLE.cs">
-      <DependentUpon>LIMUPAModel.tt</DependentUpon>
+      <DependentUpon>LIPUMAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -352,15 +355,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\LIMUPAModel.Context.tt">
+    <Content Include="Models\LIPUMAModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LIMUPAModel.edmx</DependentUpon>
-      <LastGenOutput>LIMUPAModel.Context.cs</LastGenOutput>
+      <DependentUpon>LIPUMAModel.edmx</DependentUpon>
+      <LastGenOutput>LIPUMAModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\LIMUPAModel.tt">
+    <Content Include="Models\LIPUMAModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LIMUPAModel.edmx</DependentUpon>
-      <LastGenOutput>LIMUPAModel.cs</LastGenOutput>
+      <DependentUpon>LIPUMAModel.edmx</DependentUpon>
+      <LastGenOutput>LIPUMAModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -372,12 +375,12 @@
     <Content Include="Assets\Client\fonts\Material-Design-Iconic-Fontd1f1.ttf" />
     <Content Include="Assets\Client\fonts\Material-Design-Iconic-Fontd1f1.woff" />
     <Content Include="Assets\Client\fonts\Material-Design-Iconic-Fontd1f1.woff2" />
-    <EntityDeploy Include="Models\LIMUPAModel.edmx">
+    <EntityDeploy Include="Models\LIPUMAModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LIMUPAModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>LIPUMAModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\LIMUPAModel.edmx.diagram">
-      <DependentUpon>LIMUPAModel.edmx</DependentUpon>
+    <Content Include="Models\LIPUMAModel.edmx.diagram">
+      <DependentUpon>LIPUMAModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -416,6 +419,8 @@
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Home\GetBestSeller.cshtml" />
+    <Content Include="Views\Home\GetNewArrival.cshtml" />
+    <Content Include="Views\Home\getFeatureProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

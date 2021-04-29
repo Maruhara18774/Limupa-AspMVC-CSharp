@@ -28,10 +28,39 @@ namespace ASP_3.Controllers
         }
         public ActionResult GetNewArrival()
         {
-
+            List<PRODUCT> ls = db.PRODUCTs.ToList();
+            int n = ls.Count;
+            List<PRODUCT> result = new List<PRODUCT>();
+            for(int i=0;i<n; i++)
+            {
+                PRODUCT searching = getMaxDateCreate(ls);
+                result.Add(searching);
+                ls.Remove(searching);
+            }
+            return PartialView(result);
+        }
+        private PRODUCT getMaxDateCreate(List<PRODUCT> data)
+        {
+            DateTime max = new DateTime(getYear(data[0].CREATE_DATE), getMonth(data[0].CREATE_DATE), getDay(data[0].CREATE_DATE));
+            string key = data[0].PRODUCT_ID;
+            foreach(var item in data)
+            {
+                DateTime temp = new DateTime(getYear(item.CREATE_DATE), getMonth(item.CREATE_DATE), getDay(item.CREATE_DATE));
+                int result = DateTime.Compare(max, temp);
+                if (result > 0)
+                {
+                    max = temp;
+                    key = item.PRODUCT_ID;
+                }
+            }
+            return data.Find(x => x.PRODUCT_ID == key);
         }
         public ActionResult GetBestSeller()
         {
+            /*  MINDSET - Best seller trong năm nay
+             *  Loop 1: Lấy bộ id và count --> Danh sách sản phẩm
+             *  Loop 2: Count số lượng các hàng hóa đã bán trong năm
+             */
             int year = DateTime.Now.Year;
             List<int> count = new List<int>();
             List<string> id = new List<string>();
@@ -43,10 +72,12 @@ namespace ASP_3.Controllers
             foreach (var item in db.CARTDETAILs)
             {
                 // Convert part
-                //int year = getYear(item.CART.)
-                // Thiếu create date trong Card, cần backup lại dữ liệu từ file txt
-                int key = id.FindIndex(x => x == item.PRODUCT_ID);
-                count[key]++;
+                int yearCart = getYear(item.CART.CREATE_DATE);
+                if (yearCart > year)
+                {
+                    int key = id.FindIndex(x => x == item.PRODUCT_ID);
+                    count[key]++;
+                }
             }
             List<PRODUCT> result = new List<PRODUCT>();
             for(int i = 0; i < id.Count; i++)
@@ -65,7 +96,15 @@ namespace ASP_3.Controllers
         }
         private int getYear(string date)
         {
-            return int.Parse(date.Substring(6, date.Length - 1));
+            return int.Parse(date.Substring(6, 4));
+        }
+        private int getDay(string date)
+        {
+            return int.Parse(date.Substring(0, 2));
+        }
+        private int getMonth(string date)
+        {
+            return int.Parse(date.Substring(3, 2));
         }
         private int findMax(List<int> data)
         {
@@ -80,6 +119,15 @@ namespace ASP_3.Controllers
                 }
             }
             return location;
+        }
+        public ActionResult GetFeatureProducts()
+        {
+            List<PRODUCT> result = new List<PRODUCT>();
+            foreach(var item in db.FEATUREs)
+            {
+                result.Add(item.PRODUCT);
+            }
+            return PartialView(result);
         }
     }
 }

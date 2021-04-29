@@ -23,6 +23,7 @@ namespace ASP_3.Models
     
         public string CART_ID { get; set; }
         public string ACCOUNT_ID { get; set; }
+        public string CREATE_DATE { get; set; }
         public Nullable<double> TOTAL { get; set; }
     
         public virtual ACCOUNT ACCOUNT { get; set; }

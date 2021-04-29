@@ -24,6 +24,7 @@
           </Key>
           <Property Name="CART_ID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ACCOUNT_ID" Type="varchar" MaxLength="100" />
+          <Property Name="CREATE_DATE" Type="varchar" MaxLength="12" />
           <Property Name="TOTAL" Type="float" />
         </EntityType>
         <EntityType Name="CARTDETAIL">
@@ -51,6 +52,13 @@
           </Key>
           <Property Name="FAVORITE_ID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ACCOUNT_ID" Type="varchar" MaxLength="100" />
+          <Property Name="PRODUCT_ID" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FEATURE">
+          <Key>
+            <PropertyRef Name="FEATURE_ID" />
+          </Key>
+          <Property Name="FEATURE_ID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PRODUCT_ID" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="MEMBER">
@@ -244,6 +252,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PK_FEATURE_PRODUCT">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="FEATURE" Type="Self.FEATURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="FEATURE">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PK_ORDERS_ACCOUNT">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
           <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
@@ -346,6 +366,7 @@
           <EntitySet Name="CARTDETAIL" EntityType="Self.CARTDETAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMMENT" EntityType="Self.COMMENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAVORITE" EntityType="Self.FAVORITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FEATURE" EntityType="Self.FEATURE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEMBER" EntityType="Self.MEMBER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ORDERSTATUS" EntityType="Self.ORDERSTATUS" Schema="dbo" store:Type="Tables" />
@@ -390,6 +411,10 @@
           <AssociationSet Name="PK_FAVORITE_PRODUCT" Association="Self.PK_FAVORITE_PRODUCT">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="FAVORITE" EntitySet="FAVORITE" />
+          </AssociationSet>
+          <AssociationSet Name="PK_FEATURE_PRODUCT" Association="Self.PK_FEATURE_PRODUCT">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="FEATURE" EntitySet="FEATURE" />
           </AssociationSet>
           <AssociationSet Name="PK_ORDERS_ACCOUNT" Association="Self.PK_ORDERS_ACCOUNT">
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
@@ -455,6 +480,7 @@
           </Key>
           <Property Name="CART_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ACCOUNT_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="TOTAL" Type="Double" />
           <NavigationProperty Name="ACCOUNT" Relationship="Self.PK_CART_ACCOUNT" FromRole="CART" ToRole="ACCOUNT" />
           <NavigationProperty Name="CARTDETAILs" Relationship="Self.PK_CARTDETAIL_CART" FromRole="CART" ToRole="CARTDETAIL" />
@@ -492,6 +518,14 @@
           <Property Name="PRODUCT_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ACCOUNT" Relationship="Self.PK_FAVORITE_ACCOUNT" FromRole="FAVORITE" ToRole="ACCOUNT" />
           <NavigationProperty Name="PRODUCT" Relationship="Self.PK_FAVORITE_PRODUCT" FromRole="FAVORITE" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="FEATURE">
+          <Key>
+            <PropertyRef Name="FEATURE_ID" />
+          </Key>
+          <Property Name="FEATURE_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.PK_FEATURE_PRODUCT" FromRole="FEATURE" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="MEMBER">
           <Key>
@@ -562,6 +596,7 @@
           <NavigationProperty Name="CARTDETAILs" Relationship="Self.PK_CARTDETAIL_PRODUCT" FromRole="PRODUCT" ToRole="CARTDETAIL" />
           <NavigationProperty Name="COMMENTs" Relationship="Self.PK_COMMENT_PRODUCT" FromRole="PRODUCT" ToRole="COMMENT" />
           <NavigationProperty Name="FAVORITEs" Relationship="Self.PK_FAVORITE_PRODUCT" FromRole="PRODUCT" ToRole="FAVORITE" />
+          <NavigationProperty Name="FEATUREs" Relationship="Self.PK_FEATURE_PRODUCT" FromRole="PRODUCT" ToRole="FEATURE" />
           <NavigationProperty Name="PRODUCER" Relationship="Self.PK_PRODUCT_PRODUCER" FromRole="PRODUCT" ToRole="PRODUCER" />
           <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.PK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCT" ToRole="PRODUCTTYPE" />
           <NavigationProperty Name="RATINGs" Relationship="Self.PK_RATING_PRODUCT" FromRole="PRODUCT" ToRole="RATING" />
@@ -738,6 +773,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PK_FEATURE_PRODUCT">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="FEATURE" Type="Self.FEATURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="FEATURE">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PK_ORDERS_PAYMENT">
           <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="0..1" />
           <End Role="ORDERS" Type="Self.ORDER" Multiplicity="*" />
@@ -804,6 +851,7 @@
           <EntitySet Name="CARTDETAILs" EntityType="Self.CARTDETAIL" />
           <EntitySet Name="COMMENTs" EntityType="Self.COMMENT" />
           <EntitySet Name="FAVORITEs" EntityType="Self.FAVORITE" />
+          <EntitySet Name="FEATUREs" EntityType="Self.FEATURE" />
           <EntitySet Name="MEMBERs" EntityType="Self.MEMBER" />
           <EntitySet Name="ORDERS" EntityType="Self.ORDER" />
           <EntitySet Name="ORDERSTATUS" EntityType="Self.ORDERSTATU" />
@@ -861,6 +909,10 @@
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="FAVORITE" EntitySet="FAVORITEs" />
           </AssociationSet>
+          <AssociationSet Name="PK_FEATURE_PRODUCT" Association="Self.PK_FEATURE_PRODUCT">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="FEATURE" EntitySet="FEATUREs" />
+          </AssociationSet>
           <AssociationSet Name="PK_ORDERS_PAYMENT" Association="Self.PK_ORDERS_PAYMENT">
             <End Role="PAYMENT" EntitySet="PAYMENTs" />
             <End Role="ORDERS" EntitySet="ORDERS" />
@@ -907,6 +959,7 @@
               <MappingFragment StoreEntitySet="CART">
                 <ScalarProperty Name="CART_ID" ColumnName="CART_ID" />
                 <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
                 <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -937,6 +990,14 @@
               <MappingFragment StoreEntitySet="FAVORITE">
                 <ScalarProperty Name="FAVORITE_ID" ColumnName="FAVORITE_ID" />
                 <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEATUREs">
+            <EntityTypeMapping TypeName="LIMUPAStoreModel.FEATURE">
+              <MappingFragment StoreEntitySet="FEATURE">
+                <ScalarProperty Name="FEATURE_ID" ColumnName="FEATURE_ID" />
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
               </MappingFragment>
             </EntityTypeMapping>

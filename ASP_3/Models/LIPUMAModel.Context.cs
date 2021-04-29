@@ -30,6 +30,7 @@ namespace ASP_3.Models
         public virtual DbSet<CARTDETAIL> CARTDETAILs { get; set; }
         public virtual DbSet<COMMENT> COMMENTs { get; set; }
         public virtual DbSet<FAVORITE> FAVORITEs { get; set; }
+        public virtual DbSet<FEATURE> FEATUREs { get; set; }
         public virtual DbSet<MEMBER> MEMBERs { get; set; }
         public virtual DbSet<ORDER> ORDERS { get; set; }
         public virtual DbSet<ORDERSTATU> ORDERSTATUS { get; set; }
